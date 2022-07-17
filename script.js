@@ -1,5 +1,5 @@
-let num1 = 3;
-let num2 = 3;
+let num1 = '';
+let num2 = '';
 
 function add(num1, num2){
     return num1 + num2;
@@ -21,7 +21,12 @@ function operate(operator, num1, num2){
 
 }
 
-console.log(add(num1, num2));
-console.log(subtract(num1, num2));
-console.log(multiply(num1, num2));
-console.log(divide(num1, num2));
+const buttonListener = document.querySelectorAll('button');
+    buttonListener.forEach((button) => {
+        button.addEventListener('click', () => {
+            if(!isNaN(parseInt(button.id)) ){
+                num1 += button.id;
+                console.log(num1);
+            }
+        })
+    })
