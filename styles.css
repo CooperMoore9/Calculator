@@ -29,16 +29,6 @@ body{
     background-color: white;
 }
 
-#display{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-style: solid;
-    margin-top: 3.5%;
-    width: 90%;
-    height: 15%;
-}
-
 button{
     width: 115px;
     height: 100px;
@@ -51,14 +41,16 @@ button{
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    max-width: 600px;
+    max-width: 90%;
     margin-top: 50px;
+    padding-right: 3%;
 }
 
 #buttonsFunctions{
     display: flex;
     flex-direction: column;
     gap: 12px;
+    
 }
 
 #buttonsNumbers{
@@ -72,8 +64,22 @@ button{
 
 #display{
     display: flex;
-    justify-content: flex-end;
-    padding-right: 12px;
-    font-size: 75px;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+    border-style: solid;
+    margin-top: 3.5%;
+    width: 90%;
+    height: 15%;
+    overflow: hidden;
+    font-size: 50px;
+}
+
+#displayTop{
+
+}
+
+#displayBottom{
     
 }
+
