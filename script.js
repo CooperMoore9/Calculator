@@ -34,6 +34,15 @@ function operate(sign, num1, num2){
 const buttonListener = document.querySelectorAll('button');
     buttonListener.forEach((button) => {
         button.addEventListener('click', () => {
+
+            if(evaluate !== ''){
+                num1 = evaluate;
+                num2 = '';
+                sign = '';
+                evaluate = '';
+            }
+
+
             if(button.id === 'clear'){
                 num1 = '';
                 num2 = '';
@@ -43,13 +52,7 @@ const buttonListener = document.querySelectorAll('button');
                 num1 += button.textContent;
             }else if(!isNaN(parseInt(button.id)) && sign !== '' && evaluate === ''){
                 num2 += button.textContent;
-            }else if(evaluate !== ''){
-                num1 = evaluate;
-                num2 = '';
-                sign = '';
-                evaluate = '';
-            }
-            else if(button.id === '.' && sign === ''){
+            }else if(button.id === '.' && sign === ''){
                 num1 += '.';
             }else if(button.id === '.' && sign !== ''){
                num2 += '.';
@@ -77,3 +80,9 @@ const buttonListener = document.querySelectorAll('button');
         })
     })
 
+// else if(evaluate !== ''){
+//                 num1 = evaluate;
+//                 num2 = '';
+//                 sign = '';
+//                 evaluate = '';
+//             }
