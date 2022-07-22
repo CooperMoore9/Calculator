@@ -16,7 +16,12 @@ function multiply(num1, num2){
 };
 
 function divide(num1, num2){
-    return parseFloat(num1) / parseFloat(num2);
+    if(num2 == 0){
+        alert(`Can't divide by 0`)
+        return evaluate = '';
+    }else{
+        return parseFloat(num1) / parseFloat(num2);
+    }
 };
 
 function operate(sign, num1, num2){
@@ -28,6 +33,18 @@ function operate(sign, num1, num2){
         evaluate =  multiply(num1, num2);
     }else if(sign === '/'){
         evaluate = divide(num1, num2);
+    }
+}
+
+function youStupid(){
+    if(num1 === ''){
+        num1 = 0;
+    }
+    if(num2 === ''){
+        num2 = '';
+    }
+    if(sign === ''){
+        sign = '+';
     }
 }
 
@@ -57,14 +74,27 @@ const buttonListener = document.querySelectorAll('button');
             }else if(button.id === '.' && sign !== ''){
                num2 += '.';
             }else if(button.id === '/'){
+                youStupid()
                 sign = button.id;
             }else if(button.id === '*'){
+                youStupid()
                 sign = button.id;
             }else if(button.id === '-'){
+                youStupid()
                 sign = button.id;
             }else if(button.id === '+'){
+                youStupid()
                 sign = button.id;
             }else if(button.id === '='){
+                if(num1 === ''){
+                    num1 = 0;
+                }
+                if(num2 === ''){
+                    num2 = 0;
+                }
+                if(sign === ''){
+                    sign = '+';
+                }
                 operate(sign, num1, num2);
             }
 
@@ -75,14 +105,7 @@ const buttonListener = document.querySelectorAll('button');
                 document.getElementById('displayBottom').textContent = `${num1}` + ` ${sign}` + ` ${num2}`;
             }else if(evaluate !== ''){
                 document.getElementById('displayTop').textContent = `${num1}` + ` ${sign}` + ` ${num2} =`;
-                document.getElementById('displayBottom').textContent = `${evaluate}`;
+                document.getElementById('displayBottom').textContent = `${Math.round(evaluate * 10000) / 10000 }`;
             }
         })
     })
-
-// else if(evaluate !== ''){
-//                 num1 = evaluate;
-//                 num2 = '';
-//                 sign = '';
-//                 evaluate = '';
-//             }
