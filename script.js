@@ -2,6 +2,7 @@ let num1 = '';
 let num2 = '';
 let sign = '';
 let evaluate = '';
+let lastTotal = '';
 
 function add(num1, num2){
     return parseInt(num1) + parseInt(num2);
@@ -29,7 +30,7 @@ function operate(sign, num1, num2){
     }else if(sign === '/'){
         evaluate = divide(num1, num2);
     }
-    
+    lastTotal = evaluate
 }
 
 const buttonListener = document.querySelectorAll('button');
@@ -53,18 +54,22 @@ const buttonListener = document.querySelectorAll('button');
                 sign = button.id;
             }else if(button.id === '='){
                 operate(sign, num1, num2);
+                console.log(lastTotal)
             }else if(button.id === 'clear'){
                 num1 = '';
                 num2 = '';
                 sign = '';
                 evaluate = '';
-                document.getElementById('displayBottom').textContent = `0`;
             }
 
-            if(evaluate === ''){
+            if(num1 === '' && num2 === '' && sign === '' && evaluate ===''){
+                document.getElementById('displayBottom').textContent = '0';
+                document.getElementById('displayTop').textContent = '';
+            }else if(evaluate === ''){
                 document.getElementById('displayBottom').textContent = `${num1}` + ` ${sign}` + ` ${num2}`;
             }else if(evaluate !== ''){
-                document.getElementById('displayBottom').textContent = `${num1}` + ` ${sign}` + ` ${num2}` + ` = ${evaluate}`;
+                document.getElementById('displayTop').textContent = `${num1}` + ` ${sign}` + ` ${num2} = `;
+                document.getElementById('displayBottom').textContent = `${evaluate}`;
             }
         })
     })

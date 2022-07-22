@@ -72,11 +72,11 @@ button{
     width: 90%;
     height: 15%;
     overflow: hidden;
-    font-size: 50px;
+    font-size: 75px;
 }
 
 #displayTop{
-
+    font-size: 25px;
 }
 
 #displayBottom{
