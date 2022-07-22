@@ -2,22 +2,21 @@ let num1 = '';
 let num2 = '';
 let sign = '';
 let evaluate = '';
-let lastTotal = '';
 
 function add(num1, num2){
-    return parseInt(num1) + parseInt(num2);
+    return parseFloat(num1) + parseFloat(num2);
 };
 
 function subtract(num1, num2){
-    return parseInt(num1) - parseInt(num2);
+    return parseFloat(num1) - parseFloat(num2);
 };
 
 function multiply(num1, num2){
-    return parseInt(num1) * parseInt(num2);
+    return parseFloat(num1) * parseFloat(num2);
 };
 
 function divide(num1, num2){
-    return parseInt(num1) / parseInt(num2);
+    return parseFloat(num1) / parseFloat(num2);
 };
 
 function operate(sign, num1, num2){
@@ -30,20 +29,30 @@ function operate(sign, num1, num2){
     }else if(sign === '/'){
         evaluate = divide(num1, num2);
     }
-    lastTotal = evaluate
 }
 
 const buttonListener = document.querySelectorAll('button');
     buttonListener.forEach((button) => {
         button.addEventListener('click', () => {
-            if(!isNaN(parseInt(button.id)) && sign === ''){
+            if(button.id === 'clear'){
+                num1 = '';
+                num2 = '';
+                sign = '';
+                evaluate = '';
+            }else if(!isNaN(parseInt(button.id)) && sign === ''){
                 num1 += button.textContent;
-            }else if(!isNaN(parseInt(button.id)) && sign !== ''){
-                num2 += button.textContent
-            }else if(button.id === '.' && sign === ''){
-                num1 += '.'
+            }else if(!isNaN(parseInt(button.id)) && sign !== '' && evaluate === ''){
+                num2 += button.textContent;
+            }else if(evaluate !== ''){
+                num1 = evaluate;
+                num2 = '';
+                sign = '';
+                evaluate = '';
+            }
+            else if(button.id === '.' && sign === ''){
+                num1 += '.';
             }else if(button.id === '.' && sign !== ''){
-               num2 += '.'
+               num2 += '.';
             }else if(button.id === '/'){
                 sign = button.id;
             }else if(button.id === '*'){
@@ -54,12 +63,6 @@ const buttonListener = document.querySelectorAll('button');
                 sign = button.id;
             }else if(button.id === '='){
                 operate(sign, num1, num2);
-                console.log(lastTotal)
-            }else if(button.id === 'clear'){
-                num1 = '';
-                num2 = '';
-                sign = '';
-                evaluate = '';
             }
 
             if(num1 === '' && num2 === '' && sign === '' && evaluate ===''){
@@ -68,7 +71,7 @@ const buttonListener = document.querySelectorAll('button');
             }else if(evaluate === ''){
                 document.getElementById('displayBottom').textContent = `${num1}` + ` ${sign}` + ` ${num2}`;
             }else if(evaluate !== ''){
-                document.getElementById('displayTop').textContent = `${num1}` + ` ${sign}` + ` ${num2} = `;
+                document.getElementById('displayTop').textContent = `${num1}` + ` ${sign}` + ` ${num2} =`;
                 document.getElementById('displayBottom').textContent = `${evaluate}`;
             }
         })

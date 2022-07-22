@@ -73,6 +73,7 @@ button{
     height: 15%;
     overflow: hidden;
     font-size: 75px;
+    padding-right: 10px;
 }
 
 #displayTop{
