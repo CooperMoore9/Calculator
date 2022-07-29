@@ -85,16 +85,23 @@ const buttonListener = document.querySelectorAll('button');
             }else if(button.id === '+'){
                 youStupid()
                 sign = button.id;
+            }else if(button.id === 'plusOrMinus' ){
+                if(Math.sign(num1) == 1){
+                    num1 = `-` + num1;
+                }else{
+                    num1 = num1.toString().slice(1);
+                }
             }else if(button.id === '='){
                 if(num1 === ''){
                     num1 = 0;
                 }
                 if(num2 === ''){
-                    num2 = 0;
+                    num2 = num1;
                 }
                 if(sign === ''){
                     sign = '+';
                 }
+
                 operate(sign, num1, num2);
             }
 

@@ -77,10 +77,16 @@ button{
 }
 
 #displayTop{
+    display: flex;
     font-size: 25px;
+    flex-wrap: nowrap;
 }
 
 #displayBottom{
-    
+    display: flex;
+    flex-wrap: nowrap;
 }
 
+#plusOrMinus{
+    width: 92%;
+}
