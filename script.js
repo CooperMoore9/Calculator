@@ -85,11 +85,17 @@ const buttonListener = document.querySelectorAll('button');
             }else if(button.id === '+'){
                 youStupid()
                 sign = button.id;
-            }else if(button.id === 'plusOrMinus' ){
+            }else if(button.id === 'plusOrMinus' && sign === ''){
                 if(Math.sign(num1) == 1){
                     num1 = `-` + num1;
                 }else{
                     num1 = num1.toString().slice(1);
+                }
+            }else if(button.id === 'plusOrMinus' && sign !== '' && evaluate === ''){
+                if(Math.sign(num2) == 1){
+                    num2 = `-` + num2;
+                }else{
+                    num2 = num2.toString().slice(1);
                 }
             }else if(button.id === '='){
                 if(num1 === ''){
